@@ -1,8 +1,10 @@
-import {mongoose, Schema} from "mongoose"
+import mongoose from "mongoose"
+
+const {Schema} = mongoose
 
 const autorSchema = new Schema({
-    id: {type : String, required},
-    nome : {type : String, required},
+    id: {type : String, required: true},
+    nome : {type : String, required:true},
     nacionalidade: {type: String}
 })
 

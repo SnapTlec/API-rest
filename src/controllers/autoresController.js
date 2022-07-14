@@ -1,13 +1,13 @@
 import autores from '../models/Autor.js'
 
 class AutorController{
-    static listaautores = (req, res)=>{
+    static listaAutores = (req, res)=>{
         autores.find((err, autores) => {
             res.status(200).json(autores)
         })
     }
 
-    static listaautoresPorId = (req, res) => {
+    static listaAutoresPorId = (req, res) => {
         let id = req.params.id
 
         autores.findById(id, (err, autores) => {
