@@ -12,9 +12,21 @@ class LivroController{
 
         livro.save((err) => {
             if(err){
-                res.status(500).send({message: `${err.message} - falha ao cadastrar livro.`})
+                res.status(500).send({message: `${err.message} - falha ao cadastrar o livro.`})
             }else{
                 res.status(200).send(livro.toJSON())
+            }
+        })
+    }
+
+    static atualizarLivro = (req, res) => {
+        let id = req.params.id
+
+        livros.findByIdAndUpdate(id, {$set : req.body}, (err) => {
+            if(err){
+                res.status(500).send({message : `${err.message} - falha ao atualizar o livro.`})
+            }else{
+                res.status(200).send({message : 'Livro atualizado com sucesso.'})
             }
         })
     }
