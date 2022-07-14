@@ -1,7 +1,7 @@
 import express from 'express'
 import db from './config/dbConnect.js'
-import livros from './models/Livro.js'
 import routes from './routes/index.js'
+
 
 
 db.on('erro', console.log.bind(console, 'Error de conexão'))
