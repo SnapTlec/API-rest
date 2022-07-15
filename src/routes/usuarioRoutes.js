@@ -7,7 +7,7 @@ router
     .get('/usuarios', UsuarioController.listaUsuarios)
     .get('/usuarios:id', UsuarioController.listaUsuarioPorId)
     .post('/usuarios', UsuarioController.cadastrarUsuario)
-    .put('/usuarios/:id', UsuarioController.atualizarUsuario)
+    .put('/usuario/:id', UsuarioController.atualizarUsuario)
     .delete('/usuarios/:id', UsuarioController.removerUsuario)
 
 export default router
