@@ -1,4 +1,5 @@
 import usuarios from '../models/Usuario.js'
+import bcrypt from 'bcrypt'
 
 class UsuarioController{
     static listaUsuarios = (req, res)=>{
@@ -20,14 +21,18 @@ class UsuarioController{
     }
 
     static cadastrarUsuario = (req, res) => {
-        let Usuario = new usuarios(req.body)
-
-        Usuario.save((err) => {
-            if(err){
-                res.status(500).send({message: `${err.message} - falha ao cadastrar o Usuario.`})
-            }else{
-                res.status(200).send(Usuario.toJSON())
-            }
+        bcrypt.hash(req.body.senha, 12).then((senhaCrypt) => {
+            let Usuario = new usuarios({
+                email : req.body.email, 
+                senha : senhaCrypt
+            })
+            Usuario.save((err) => {
+                if(err){
+                    res.status(500).send({message: `${err.message} - falha ao cadastrar o Usuario.`})
+                }else{
+                    res.status(200).send(Usuario.toJSON())
+                }
+            })
         })
     }
 
