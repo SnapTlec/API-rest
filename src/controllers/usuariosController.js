@@ -21,19 +21,15 @@ class UsuarioController{
     }
 
     static cadastrarUsuario = (req, res) => {
-        bcrypt.hash(req.body.senha, 12).then((senhaCrypt) => {
-            let Usuario = new usuarios({
-                email : req.body.email, 
-                senha : senhaCrypt
-            })
-            Usuario.save((err) => {
-                if(err){
-                    res.status(500).send({message: `${err.message} - falha ao cadastrar o Usuario.`})
-                }else{
-                    res.status(200).send(Usuario.toJSON())
-                }
-            })
+        let Usuario = new usuarios(req.body)
+        Usuario.save((err) => {
+            if(err){
+                res.status(500).send({message: `${err.message} - falha ao cadastrar o Usuario.`})
+            }else{
+                res.status(200).send(Usuario.toJSON())
+            }
         })
+
     }
 
     static atualizarUsuario = (req, res) => {

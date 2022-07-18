@@ -1,4 +1,6 @@
 import mongoose from "mongoose"
+import bcrypt from 'bcrypt'
+import 'dotenv/config'
 
 const {Schema} = mongoose
 
@@ -22,6 +24,13 @@ const usuarioSchema = new Schema({
         default: Date.now
     },
     
+})
+
+usuarioSchema.pre('save', async function(next){
+    const senhaCrypt = await bcrypt.hash(this.senha, 12)
+    this.senha = senhaCrypt
+
+    next()
 })
 
 const usuarios = mongoose.model('usuarios', usuarioSchema)
