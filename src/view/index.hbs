@@ -14,6 +14,7 @@
     </section>
     <main>
         <h2>EndPoints</h2>
+        <!--Buscar livros por ID-->
         <article class="article" id="getBookById">
             <header>
                 <h3>Buscar livros por ID</h3>
@@ -22,6 +23,7 @@
                 </header>
             <p>Busque um livro especifico atráves do ID.</p>
         </article>
+        <!--Listar todos os livros cadastrados-->
         <article class="article" id="getBooks">
             <header>
                 <h3>Liste todos os livros da base</h3>
@@ -29,7 +31,15 @@
                 <span><strong>URL:</strong> /livros</span></header>
             <p>Liste todos os livros da base</p>
         </article>
-
+        <!--Cadastrar livros-->
+        <article class="article" id="postBook">
+            <header>
+                <h3>Cadastrar livro</h3>
+                <span><strong>Método:</strong> POST</span><br>
+                <span><strong>URL:</strong> /livros</span>
+            </header>
+            <p>Cadastre livros na base.</p>
+        </article>
     </main>
 </body>
 </html>
