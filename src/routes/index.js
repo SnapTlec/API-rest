@@ -6,7 +6,7 @@ import login from './loginRoute.js'
 
 const routes = (app) => {
     app.route('/').get((req, res) =>{
-        res.status(200).send('Curso de Node')
+        res.render('index.hbs')
     })
 
     app.use(
