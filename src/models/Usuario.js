@@ -6,13 +6,15 @@ const {Schema} = mongoose
 
 const usuarioSchema = new Schema({
     id: {
-        type : String
+        type : String,
+        select:true
     },
     email: {
         type : String,
         unique: true, 
         required : true,
-        lowercase: true
+        lowercase: true,
+        select: true
     },
     senha: {
         type: String, 
@@ -21,7 +23,8 @@ const usuarioSchema = new Schema({
     },
     criadoEm:{
         type: Date,
-        default: Date.now
+        default: Date.now,
+        select: true
     },
     
 })

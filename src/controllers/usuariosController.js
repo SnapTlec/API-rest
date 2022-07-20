@@ -1,5 +1,5 @@
 import usuarios from '../models/Usuario.js'
-import bcrypt from 'bcrypt'
+import AuthController from './authController.js'
 
 class UsuarioController{
     static listaUsuarios = (req, res)=>{
@@ -26,7 +26,11 @@ class UsuarioController{
             if(err){
                 res.status(500).send({message: `${err.message} - falha ao cadastrar o Usuario.`})
             }else{
-                res.status(200).send(Usuario.toJSON())
+                Usuario.senha = undefined
+                res.status(200).send({
+                    usuario: Usuario.toJSON(), 
+                    token: AuthController.geradorToken(Usuario.id)
+                })
             }
         })
 
